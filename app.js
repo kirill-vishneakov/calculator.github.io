@@ -85,11 +85,12 @@ document.querySelector('.buttons').onclick = (event) => {
                 break
             case '%':
                 firstNumber = (firstNumber / 100) * secondNumber
-                secondNumber = ''
-                sign = ''
-                result.textContent = firstNumber
-                console.log(firstNumber, sign, secondNumber)
+                break
         }
+        secondNumber = ''
+        sign = ''
+        result.textContent = firstNumber
+        console.log(firstNumber, sign, secondNumber)
     }
 
 }
