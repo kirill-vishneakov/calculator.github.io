@@ -1,0 +1,24 @@
+body{
+    background: #000;
+}
+
+.calc{
+    background: #c3bdbd;
+    color: #000;
+}
+
+.calc-screen{
+    background: #868383;
+}
+
+.btn{
+    background: #a6a6a6;
+    box-shadow: 2px 2px 4px #4f4f4f;
+}
+
+.btn.bg-grey{
+    background: #4e4d4d;
+}
+.btn.bg-orange{
+    background: #845d27;
+}
