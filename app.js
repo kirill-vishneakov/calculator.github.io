@@ -30,6 +30,13 @@ document.querySelector('.buttons').onclick = (event) => {
             console.log(firstNumber, sign, secondNumber)
         }
     } else if (key !== '=') {
+        if (firstNumber === '') return
+        if (key === '%' && sign !== '' && secondNumber !== '') {
+            secondNumber = ((firstNumber / 100) * secondNumber).toFixed(2)
+            result.textContent = secondNumber
+            console.log(firstNumber, sign, secondNumber)
+            return
+        }
         sign = key
         if (key === 'ac') return clearAll()
         else if (key === '+/-') {
@@ -76,6 +83,12 @@ document.querySelector('.buttons').onclick = (event) => {
                 result.textContent = firstNumber
                 console.log(firstNumber, sign, secondNumber)
                 break
+            case '%':
+                firstNumber = (firstNumber / 100) * secondNumber
+                secondNumber = ''
+                sign = ''
+                result.textContent = firstNumber
+                console.log(firstNumber, sign, secondNumber)
         }
     }
 
