@@ -1,6 +1,9 @@
 let firstNumber = ''
 let secondNumber = ''
 let sign = ''
+let resultat
+
+const history = []
 
 const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']
 
@@ -9,10 +12,9 @@ const clearAll = () => {
     secondNumber = ''
     sign = ''
     result.textContent = '0'
-    console.log(firstNumber, sign, secondNumber)
 }
-
-const result = document.querySelector('p')
+const historyP = document.getElementById('history')
+const result = document.querySelector('#result')
 
 document.querySelector('.buttons').onclick = (event) => {
     if (!event.target.classList.contains('btn')) return
@@ -23,74 +25,60 @@ document.querySelector('.buttons').onclick = (event) => {
                 ? key
                 : firstNumber + key
             result.textContent = firstNumber
-            console.log(firstNumber, sign, secondNumber)
         } else {
             secondNumber += key
             result.textContent = secondNumber
-            console.log(firstNumber, sign, secondNumber)
         }
     } else if (key !== '=') {
         if (firstNumber === '') return
         if (key === '%' && sign !== '' && secondNumber !== '') {
             secondNumber = ((firstNumber / 100) * secondNumber).toFixed(2)
             result.textContent = secondNumber
-            console.log(firstNumber, sign, secondNumber)
             return
         }
-        sign = key
         if (key === 'ac') return clearAll()
         else if (key === '+/-') {
             if (secondNumber) {
-                secondNumber = '-' + secondNumber
+                secondNumber = (+secondNumber * -1).toString()
                 result.textContent = secondNumber
-                console.log(firstNumber, sign, secondNumber)
+                return
             } else {
-                firstNumber = '-' + firstNumber
+                firstNumber = (+firstNumber * -1).toString()
                 result.textContent = firstNumber
-                console.log(firstNumber, sign, secondNumber)
+                return
             }
         }
-        console.log(firstNumber, sign, secondNumber);
+        sign = key
     } else {
         switch (sign) {
             case '+':
-                firstNumber = (+firstNumber) + (+secondNumber)
-                secondNumber = ''
-                sign = ''
-                result.textContent = firstNumber
-                console.log(firstNumber, sign, secondNumber)
+                resultat = (+firstNumber) + (+secondNumber)
                 break
             case '-':
-                firstNumber = firstNumber - secondNumber
-                secondNumber = ''
-                sign = ''
-                result.textContent = firstNumber
-                console.log(firstNumber, sign, secondNumber)
+                resultat = firstNumber - secondNumber
                 break
             case 'x':
-                firstNumber = firstNumber * secondNumber
-                secondNumber = ''
-                sign = ''
-                result.textContent = firstNumber
-                console.log(firstNumber, sign, secondNumber)
+                resultat = firstNumber * secondNumber
                 break
             case '/':
-                firstNumber = secondNumber === '0'
+                resultat = secondNumber === '0'
                     ? 'Error'
                     : firstNumber / secondNumber
-                secondNumber = ''
-                sign = ''
-                result.textContent = firstNumber
-                console.log(firstNumber, sign, secondNumber)
                 break
             case '%':
                 firstNumber = (firstNumber / 100) * secondNumber
                 break
         }
+        history.push(firstNumber + sign + secondNumber + '=' + resultat)
+        firstNumber = resultat
         secondNumber = ''
         sign = ''
         result.textContent = firstNumber
-        console.log(firstNumber, sign, secondNumber)
+        historyP.textContent = ''
+        history.forEach(element => {
+            historyP.textContent += element + ' '
+        });
     }
-
 }
+
+
