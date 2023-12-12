@@ -14,8 +14,6 @@ const clearAll = () => {
     result.textContent = '0'
 }
 
-const result = document.querySelector('#result')
-
 document.querySelector('.buttons').onclick = (event) => {
     if (!event.target.classList.contains('btn')) return
     const key = event.target.textContent
@@ -50,6 +48,7 @@ document.querySelector('.buttons').onclick = (event) => {
         }
         sign = key
     } else {
+        if (!secondNumber) return
         switch (sign) {
             case '+':
                 resultat = (+firstNumber) + (+secondNumber)
@@ -76,5 +75,4 @@ document.querySelector('.buttons').onclick = (event) => {
         result.textContent = firstNumber
     }
 }
-
 
