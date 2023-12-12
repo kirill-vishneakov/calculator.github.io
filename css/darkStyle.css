@@ -22,6 +22,11 @@ body{
 .btn.bg-orange{
     background: #845d27;
 }
+
+a{
+    background: #000;
+}
+
 #history{
     color: #fff;
 }

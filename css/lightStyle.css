@@ -22,6 +22,10 @@ body{
     background: #ff9501;
 }
 
+a{
+    color: #fff;
+}
+
 #history{
     color: #000;
 }

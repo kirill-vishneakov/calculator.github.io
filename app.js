@@ -13,7 +13,7 @@ const clearAll = () => {
     sign = ''
     result.textContent = '0'
 }
-const historyP = document.getElementById('history')
+
 const result = document.querySelector('#result')
 
 document.querySelector('.buttons').onclick = (event) => {
@@ -74,10 +74,6 @@ document.querySelector('.buttons').onclick = (event) => {
         secondNumber = ''
         sign = ''
         result.textContent = firstNumber
-        historyP.textContent = ''
-        history.forEach(element => {
-            historyP.textContent += element + ' '
-        });
     }
 }
 
